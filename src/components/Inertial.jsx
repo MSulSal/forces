@@ -1,6 +1,7 @@
 import Sketch from "react-p5";
 
 let movers = [];
+let count = 0;
 
 class Mover {
   constructor(index, p5, parent, massSlider, x, y) {
@@ -26,7 +27,7 @@ class Mover {
   }
 
   show() {
-    this.p5.stroke(0);
+    this.p5.stroke(50);
     this.p5.fill(175);
     this.p5.circle(this.position.x, this.position.y, this.mass * 16);
   }
@@ -72,8 +73,8 @@ const Inertial = () => {
   };
 
   const draw = (p5) => {
-    // p5.clear();
-    let gravity = p5.createVector(0, 100);
+    p5.clear();
+    let gravity = p5.createVector(0, 1000);
     for (let mover of movers) {
       mover.applyForce(gravity);
       if (p5.mouseIsPressed) {
