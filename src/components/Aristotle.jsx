@@ -66,7 +66,7 @@ const Aristotle = () => {
         canvasParentRef,
         p5.createSlider(1, p5.width / (4 * 16), 1, 0.5),
         p5.width / 4 + (i * p5.width) / 2,
-        p5.height / 2
+        30
       );
     }
   };
