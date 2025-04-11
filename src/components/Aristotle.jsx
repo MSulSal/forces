@@ -52,7 +52,7 @@ class Mover {
   }
 }
 
-const Wind = () => {
+const Aristotle = () => {
   const setup = (p5, canvasParentRef) => {
     const size = 2;
     p5.background(255);
@@ -89,4 +89,4 @@ const Wind = () => {
   return <Sketch setup={setup} draw={draw} />;
 };
 
-export default Wind;
+export default Aristotle;

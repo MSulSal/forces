@@ -1,5 +1,5 @@
 import Balloon from "./components/Balloon";
-import Wind from "./components/Wind";
+import Aristotle from "./components/Aristotle";
 
 const App = () => {
   return (
@@ -12,7 +12,7 @@ const App = () => {
         </div>
         <div className="canvas-container">
           <p>More mass, more weight</p>
-          <Wind />
+          <Aristotle />
         </div>
       </div>
     </div>
