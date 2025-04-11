@@ -11,7 +11,7 @@ const App = () => {
           <Balloon />
         </div>
         <div className="canvas-container">
-          <p>More mass, more weight</p>
+          <p>Inertial Gravitational Acceleration</p>
           <Aristotle />
         </div>
       </div>
