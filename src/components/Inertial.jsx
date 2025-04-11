@@ -52,7 +52,7 @@ class Mover {
   }
 }
 
-const Aristotle = () => {
+const Inertial = () => {
   const setup = (p5, canvasParentRef) => {
     const size = 2;
     p5.background(255);
@@ -89,4 +89,4 @@ const Aristotle = () => {
   return <Sketch setup={setup} draw={draw} />;
 };
 
-export default Aristotle;
+export default Inertial;

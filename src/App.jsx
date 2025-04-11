@@ -1,5 +1,5 @@
 import Balloon from "./components/Balloon";
-import Aristotle from "./components/Aristotle";
+import Inertial from "./components/Inertial";
 
 const App = () => {
   return (
@@ -12,7 +12,7 @@ const App = () => {
         </div>
         <div className="canvas-container">
           <p>Inertial Gravitational Acceleration</p>
-          <Aristotle />
+          <Inertial />
         </div>
       </div>
     </div>
