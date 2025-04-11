@@ -1,4 +1,5 @@
 import Balloon from "./components/Balloon";
+import Wind from "./components/Wind";
 
 const App = () => {
   return (
@@ -8,6 +9,10 @@ const App = () => {
         <div className="canvas-container">
           <p>Helium Balloon</p>
           <Balloon />
+        </div>
+        <div className="canvas-container">
+          <p>More mass, more weight</p>
+          <Wind />
         </div>
       </div>
     </div>

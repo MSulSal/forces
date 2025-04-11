@@ -5,7 +5,6 @@ let mover, gravitySlider, windSliderx, windSlidery, gLabel, xLabel, yLabel;
 class Mover {
   constructor(p5) {
     this.p5 = p5;
-    this.width;
     this.position = p5.createVector(p5.width / 2, p5.height / 2);
     this.velocity = p5.createVector(0, 0);
     this.acceleration = p5.createVector(0, 0);
@@ -14,7 +13,7 @@ class Mover {
     this.buoyancy = 5.5;
   }
 
-  step() {
+  update() {
     let dt = this.p5.deltaTime / 1000;
     this.gravity = this.p5.createVector(0, gravitySlider.value());
     this.wind = this.p5.createVector(windSliderx.value(), -windSlidery.value());
@@ -79,7 +78,7 @@ const Balloon = () => {
 
   const draw = (p5) => {
     p5.clear();
-    mover.step();
+    mover.update();
     mover.checkEdges();
     mover.show();
   };
