@@ -11,7 +11,7 @@ class Mover {
     this.acceleration = p5.createVector(0, 0);
     this.gravity = p5.createVector(0, 0);
     this.wind = p5.createVector(0, 0);
-    this.buoyancy = 0.1;
+    this.buoyancy = 5.5;
   }
 
   step() {
@@ -67,13 +67,13 @@ const Balloon = () => {
     const height = width * 0.5;
     p5.createCanvas(width, height).parent(canvasParentRef);
     gLabel = p5.createDiv("G: (" + 10 + ")").parent(canvasParentRef);
-    gravitySlider = p5.createSlider(0, 100, 10, 0.1).parent(canvasParentRef);
+    gravitySlider = p5.createSlider(0, 10, 5, 0.5).parent(canvasParentRef);
     xLabel = p5
       .createDiv("Horizontal Wind: (" + 0 + ")")
       .parent(canvasParentRef);
-    windSliderx = p5.createSlider(0, 100, 0, 0.1).parent(canvasParentRef);
+    windSliderx = p5.createSlider(-10, 10, 0, 0.5).parent(canvasParentRef);
     yLabel = p5.createDiv("Vertical Wind: (" + 0 + ")").parent(canvasParentRef);
-    windSlidery = p5.createSlider(0, 100, 10, 0.1).parent(canvasParentRef);
+    windSlidery = p5.createSlider(-10, 10, 0, 0.5).parent(canvasParentRef);
     mover = new Mover(p5);
   };
 
