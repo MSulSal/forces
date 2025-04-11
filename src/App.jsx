@@ -6,7 +6,7 @@ const App = () => {
       <h1>Forces</h1>
       <div className="canvas-grid">
         <div className="canvas-container">
-          <p>Helium Balloon</p>
+          <p>Helium Balloo</p>
           <Balloon />
         </div>
       </div>
