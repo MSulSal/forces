@@ -2,6 +2,7 @@ import Sketch from "react-p5";
 
 let movers = [];
 let count = 0;
+let gravitySlider, gravityLabel;
 
 class Mover {
   constructor(index, p5, parent, massSlider, x, y) {
@@ -27,8 +28,17 @@ class Mover {
   }
 
   show() {
-    this.p5.stroke(50);
-    this.p5.fill(175);
+    this.p5.stroke(50, 50);
+    if (count < 100) {
+      this.p5.stroke(50, count);
+      this.p5.fill(175, count);
+      count += 10;
+    } else {
+      this.p5.stroke(50);
+      this.p5.fill(175);
+      count = 0;
+    }
+    // this.p5.fill(175);
     this.p5.circle(this.position.x, this.position.y, this.mass * 16);
   }
 
@@ -70,11 +80,16 @@ const Inertial = () => {
         30
       );
     }
+    gravitySlider = p5.createSlider(0, 5000, 1000, 1);
+    gravityLabel = p5.createDiv("gravity: " + gravitySlider.value());
+    gravityLabel.parent(p5.canvas.parentElement);
+    gravitySlider.parent(p5.canvas.parentElement);
   };
 
   const draw = (p5) => {
-    p5.clear();
-    let gravity = p5.createVector(0, 1000);
+    // p5.clear();
+    gravityLabel.html("gravity: " + gravitySlider.value());
+    let gravity = p5.createVector(0, gravitySlider.value());
     for (let mover of movers) {
       mover.applyForce(gravity);
       if (p5.mouseIsPressed) {
