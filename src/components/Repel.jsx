@@ -64,7 +64,7 @@ class Mover {
         this.position.y = this.p5.height; // reset to bottom boundary
         this.velocity.y *= -1; // invert vertical velocity
       } else {
-        let forceMag = this.mass / this.p5.height - this.position.y;
+        let forceMag = this.mass / (this.p5.height - this.position.y);
         let force = this.p5.createVector(0, -1).mult(forceMag);
         this.applyForce(force);
       }
@@ -88,7 +88,7 @@ class Mover {
         this.position.x = this.p5.width; // reset to right boundary
         this.velocity.x *= -1; // invert horizontal velocity
       } else {
-        let forceMag = this.mass / this.p5.width - this.position.x;
+        let forceMag = this.mass / (this.p5.width - this.position.x);
         let force = this.p5.createVector(-1, 0).mult(forceMag);
         this.applyForce(force);
       }
