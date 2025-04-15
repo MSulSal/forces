@@ -28,7 +28,6 @@ class Mover {
   }
 
   show() {
-    // this.p5.stroke(50, 50);
     if (count < 100) {
       this.p5.stroke(50, count);
       this.p5.fill(175, count);
@@ -38,13 +37,11 @@ class Mover {
       this.p5.fill(175);
       count = 0;
     }
-    // this.p5.stroke(50);
-    // this.p5.fill(175);
     this.p5.circle(this.position.x, this.position.y, this.mass * 16);
   }
 
   checkEdges() {
-    const loss = 0.5;
+    const loss = 1;
     if (this.position.x > this.p5.width) {
       this.velocity.x *= -1 * loss;
     }
@@ -88,7 +85,6 @@ const Repel = () => {
   };
 
   const draw = (p5) => {
-    // p5.clear();
     gravityLabel.html("gravity: " + gravitySlider.value());
     let gravity = p5.createVector(0, gravitySlider.value());
     for (let mover of movers) {

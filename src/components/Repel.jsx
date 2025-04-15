@@ -41,57 +41,41 @@ class Mover {
     this.p5.circle(this.position.x, this.position.y, this.mass * 16);
   }
 
-  // Instead of a generic inverseSquare method, we now compute the repulsive force
-  // from each wall explicitly if the particle is within a threshold distance.
   checkEdges() {
-    const threshold = 50; // Only apply wall repulsion when close to a wall
-
-    // Top wall: repulse if within threshold; bounce if it goes above the canvas
-    if (this.position.y < threshold) {
-      if (this.position.y < 0) {
-        this.position.y = 0; // reset to top boundary
-        this.velocity.y *= -1; // invert vertical velocity (bounce)
-      } else {
-        let forceMag = this.mass / this.position.y;
-        let force = this.p5.createVector(0, 1).mult(forceMag);
-        this.applyForce(force);
-      }
+    if (this.position.y < 0) {
+      this.position.y = 0;
+      this.velocity.y *= -1;
+    } else {
+      let forceMag = this.mass / this.position.y;
+      let force = this.p5.createVector(0, 1).mult(forceMag);
+      this.applyForce(force);
     }
 
-    // Bottom wall: repulse if within threshold; bounce if it goes below the canvas
-    if (this.p5.height - this.position.y < threshold) {
-      if (this.position.y > this.p5.height) {
-        this.position.y = this.p5.height; // reset to bottom boundary
-        this.velocity.y *= -1; // invert vertical velocity
-      } else {
-        let forceMag = this.mass / (this.p5.height - this.position.y);
-        let force = this.p5.createVector(0, -1).mult(forceMag);
-        this.applyForce(force);
-      }
+    if (this.position.y > this.p5.height) {
+      this.position.y = this.p5.height;
+      this.velocity.y *= -1;
+    } else {
+      let forceMag = this.mass / (this.p5.height - this.position.y);
+      let force = this.p5.createVector(0, -1).mult(forceMag);
+      this.applyForce(force);
     }
 
-    // Left wall: repulse if within threshold; bounce if it goes beyond left edge
-    if (this.position.x < threshold) {
-      if (this.position.x < 0) {
-        this.position.x = 0; // reset to left boundary
-        this.velocity.x *= -1; // invert horizontal velocity
-      } else {
-        let forceMag = this.mass / this.position.x;
-        let force = this.p5.createVector(1, 0).mult(forceMag);
-        this.applyForce(force);
-      }
+    if (this.position.x < 0) {
+      this.position.x = 0;
+      this.velocity.x *= -1;
+    } else {
+      let forceMag = this.mass / this.position.x;
+      let force = this.p5.createVector(1, 0).mult(forceMag);
+      this.applyForce(force);
     }
 
-    // Right wall: repulse if within threshold; bounce if it goes beyond right edge
-    if (this.p5.width - this.position.x < threshold) {
-      if (this.position.x > this.p5.width) {
-        this.position.x = this.p5.width; // reset to right boundary
-        this.velocity.x *= -1; // invert horizontal velocity
-      } else {
-        let forceMag = this.mass / (this.p5.width - this.position.x);
-        let force = this.p5.createVector(-1, 0).mult(forceMag);
-        this.applyForce(force);
-      }
+    if (this.position.x > this.p5.width) {
+      this.position.x = this.p5.width;
+      this.velocity.x *= -1;
+    } else {
+      let forceMag = this.mass / (this.p5.width - this.position.x);
+      let force = this.p5.createVector(-1, 0).mult(forceMag);
+      this.applyForce(force);
     }
   }
 
@@ -124,7 +108,6 @@ const Repel = () => {
   };
 
   const draw = (p5) => {
-    // p5.clear();
     gravityLabel.html("gravity: " + gravitySlider.value());
     let gravity = p5.createVector(0, gravitySlider.value());
     for (let mover of movers) {
