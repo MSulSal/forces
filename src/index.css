@@ -1,9 +1,27 @@
+/* Ensure the full viewport is used and remove default margins */
 html,
 body {
   height: 100%;
   margin: 0;
 }
 
+/* Center the entire app vertically and horizontally */
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  text-align: center;
+  font-family: sans-serif;
+}
+/* Ensure the full viewport is used and remove default margins */
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+/* Center the entire app vertically and horizontally */
 .App {
   display: flex;
   flex-direction: column;
@@ -13,16 +31,12 @@ body {
   font-family: sans-serif;
 }
 
-.canvas-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(550px, 1fr));
-  gap: 20px;
-  width: 100%;
-  max-width: 1200px;
-  margin: 20px auto;
-}
-
+/* Make the container for the p5 canvas responsive and centered */
 .canvas-container {
+  width: 90%;
+  max-width: 600px;
+  margin: 20px auto;
+  /* Optionally add a border or shadow */
   border: 1px solid #ddd;
   padding: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
