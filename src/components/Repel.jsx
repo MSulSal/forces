@@ -46,7 +46,7 @@ class Mover {
       this.position.y = 0;
       this.velocity.y *= -1;
     } else {
-      let forceMag = this.mass / this.position.y;
+      let forceMag = (this.mass * 100) / this.position.y;
       let force = this.p5.createVector(0, 1).mult(forceMag);
       this.applyForce(force);
     }
@@ -55,7 +55,7 @@ class Mover {
       this.position.y = this.p5.height;
       this.velocity.y *= -1;
     } else {
-      let forceMag = this.mass / (this.p5.height - this.position.y);
+      let forceMag = (this.mass * 100) / (this.p5.height - this.position.y);
       let force = this.p5.createVector(0, -1).mult(forceMag);
       this.applyForce(force);
     }
@@ -64,7 +64,7 @@ class Mover {
       this.position.x = 0;
       this.velocity.x *= -1;
     } else {
-      let forceMag = this.mass / this.position.x;
+      let forceMag = (this.mass * 100) / this.position.x;
       let force = this.p5.createVector(1, 0).mult(forceMag);
       this.applyForce(force);
     }
@@ -73,7 +73,7 @@ class Mover {
       this.position.x = this.p5.width;
       this.velocity.x *= -1;
     } else {
-      let forceMag = this.mass / (this.p5.width - this.position.x);
+      let forceMag = (this.mass * 100) / (this.p5.width - this.position.x);
       let force = this.p5.createVector(-1, 0).mult(forceMag);
       this.applyForce(force);
     }
