@@ -1,5 +1,6 @@
 import Balloon from "./components/Balloon";
 import Inertial from "./components/Inertial";
+import Repel from "./components/Repel";
 
 const App = () => {
   return (
@@ -13,6 +14,10 @@ const App = () => {
         <div className="canvas-container">
           <p>Inertial Gravitational Acceleration</p>
           <Inertial />
+        </div>
+        <div className="canvas-container">
+          <p>Inertial Gravitational Acceleration, Repulsive Walls</p>
+          <Repel />
         </div>
       </div>
     </div>
