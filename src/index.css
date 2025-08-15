@@ -3,6 +3,8 @@ html,
 body {
   height: 100%;
   margin: 0;
+  background-color: black;
+  color: #0f0;
 }
 
 /* Center the entire app vertically and horizontally */
@@ -42,4 +44,5 @@ body {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
+  border-color: #0f0;
 }

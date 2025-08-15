@@ -1,7 +1,6 @@
 import Sketch from "react-p5";
 
 let movers = [];
-let count = 0;
 let gravitySlider, gravityLabel;
 
 class Mover {
@@ -28,30 +27,33 @@ class Mover {
   }
 
   show() {
-    if (count < 100) {
-      this.p5.stroke(50, count);
-      this.p5.fill(175, count);
-      count += 10;
-    } else {
-      this.p5.stroke(50);
-      this.p5.fill(175);
-      count = 0;
-    }
+    this.p5.colorMode(this.p5.HSB, 360, 100, 100); // hue 0–360
+    let speed = this.velocity.mag();
+    let maxSpeed = 100; // tweak as needed
+    let hue = this.p5.map(speed, 0, maxSpeed, 270, 0); // 270 = violet, 0 = red
+    this.p5.fill(hue, 100, 100);
+    this.p5.noStroke();
     this.p5.circle(this.position.x, this.position.y, this.mass * 16);
+
+    // this.p5.circle(this.position.x, this.position.y, this.mass * 16);
   }
 
   checkEdges() {
     const loss = 1;
-    if (this.position.x > this.p5.width) {
+    if (this.position.x > this.p5.width - this.mass * 16) {
+      this.position.x = this.p5.width - this.mass * 16;
       this.velocity.x *= -1 * loss;
     }
-    if (this.position.x < 0) {
+    if (this.position.x < this.mass * 16) {
+      this.position.x = this.mass * 16;
       this.velocity.x *= -1 * loss;
     }
 
-    if (this.position.y > this.p5.height) {
+    if (this.position.y > this.p5.height - this.mass * 16) {
+      this.position.y = this.p5.height - this.mass * 16;
       this.velocity.y *= -1 * loss;
-    } else if (this.position.y < 0) {
+    } else if (this.position.y < this.mass * 16) {
+      this.position.y = this.mass * 16;
       this.velocity.y *= -1 * loss;
     }
   }
@@ -85,6 +87,12 @@ const Repel = () => {
   };
 
   const draw = (p5) => {
+    // Fade previous frame with semi-transparent black
+    p5.colorMode(p5.RGB); // temporarily switch to RGB for fading
+    p5.fill(0, 50); // black with 50 alpha (adjust for stronger/weaker blur)
+    p5.noStroke();
+    p5.rect(0, 0, p5.width, p5.height);
+
     gravityLabel.html("gravity: " + gravitySlider.value());
     let gravity = p5.createVector(0, gravitySlider.value());
     for (let mover of movers) {

@@ -29,9 +29,9 @@ class Mover {
 
   show() {
     this.p5.noStroke();
-    this.p5.fill(100);
+    this.p5.fill(0, 255, 0, 50);
     this.p5.rect(this.position.x - 2.5, this.position.y + 20, 5, 100);
-    this.p5.fill(255, 0, 0);
+    this.p5.fill(0, 255, 0);
     this.p5.ellipse(this.position.x, this.position.y, 50, 70);
     gLabel.html("G: (" + gravitySlider.value() + ")");
     xLabel.html("Horizontal Wind: (" + windSliderx.value() + ")");
@@ -40,20 +40,20 @@ class Mover {
 
   checkEdges() {
     const loss = 0.5;
-    if (this.position.x > this.p5.width) {
-      this.position.x = this.p5.width - 48;
+    if (this.position.x > this.p5.width - 25) {
+      this.position.x = this.p5.width - 25;
       this.velocity.x *= -1 * loss;
     }
-    if (this.position.x < 0) {
-      this.position.x = 48;
+    if (this.position.x < 25) {
+      this.position.x = 25;
       this.velocity.x *= -1 * loss;
     }
 
-    if (this.position.y > this.p5.height) {
-      this.position.y = this.p5.height - 48;
+    if (this.position.y > this.p5.height - 35) {
+      this.position.y = this.p5.height - 35;
       this.velocity.y *= -1 * loss;
-    } else if (this.position.y < 0) {
-      this.position.y = 48;
+    } else if (this.position.y < 35) {
+      this.position.y = 35;
       this.velocity.y *= -1 * loss;
     }
   }
@@ -61,7 +61,7 @@ class Mover {
 
 const Balloon = () => {
   const setup = (p5, canvasParentRef) => {
-    p5.background(255);
+    p5.background(0);
     const width = canvasParentRef.offsetWidth;
     const height = width * 0.5;
     p5.createCanvas(width, height).parent(canvasParentRef);
