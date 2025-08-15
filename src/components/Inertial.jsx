@@ -11,7 +11,7 @@ class Mover {
     this.mass = massSlider.value();
     this.position = p5.createVector(x, y);
     this.velocity = p5.createVector(0, 0);
-    this.acceleration = p5.createVector(0, 1);
+    this.acceleration = p5.createVector(0, 0);
     this.massLabel = p5.createDiv("particle " + index + " mass: " + this.mass);
     this.massLabel.parent(parent);
     this.massSlider.parent(parent);
@@ -40,20 +40,20 @@ class Mover {
 
   checkEdges() {
     const loss = 1;
-    if (this.position.x > this.p5.width - this.mass * 16) {
-      this.position.x = this.p5.width - this.mass * 16;
+    if (this.position.x > this.p5.width - this.mass * 8) {
+      this.position.x = this.p5.width - this.mass * 8;
       this.velocity.x *= -1 * loss;
     }
-    if (this.position.x < this.mass * 16) {
-      this.position.x = this.mass * 16;
+    if (this.position.x < this.mass * 8) {
+      this.position.x = this.mass * 8;
       this.velocity.x *= -1 * loss;
     }
 
-    if (this.position.y > this.p5.height - this.mass * 16) {
-      this.position.y = this.p5.height - this.mass * 16;
+    if (this.position.y > this.p5.height - this.mass * 8) {
+      this.position.y = this.p5.height - this.mass * 8;
       this.velocity.y *= -1 * loss;
-    } else if (this.position.y < this.mass * 16) {
-      this.position.y = this.mass * 16;
+    } else if (this.position.y < this.mass * 8) {
+      this.position.y = this.mass * 8;
       this.velocity.y *= -1 * loss;
     }
   }
@@ -89,7 +89,7 @@ const Repel = () => {
   const draw = (p5) => {
     // Fade previous frame with semi-transparent black
     p5.colorMode(p5.RGB); // temporarily switch to RGB for fading
-    p5.fill(0, 50); // black with 50 alpha (adjust for stronger/weaker blur)
+    p5.fill(0, 0, 0, 31.7); // black with 50 alpha (adjust for stronger/weaker blur)
     p5.noStroke();
     p5.rect(0, 0, p5.width, p5.height);
 
